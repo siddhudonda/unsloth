@@ -32,6 +32,8 @@ from torch import LongTensor, FloatTensor
 from transformers.models.llama.modeling_llama import logger
 from .save import patch_saving_functions
 import os
+import sys
+import subprocess
 import shutil
 from .tokenizer_utils import *
 from .models._utils import patch_tokenizer
@@ -2616,7 +2618,7 @@ def test_chat_templates():
     try:
         from fastchat.conversation import get_conv_template
     except:
-        os.system("pip -qqq install git+https://github.com/lm-sys/FastChat.git")
+        subprocess.run([sys.executable, "-m", "pip", "-qqq", "install", "git+https://github.com/lm-sys/FastChat.git"], check=False)
         from fastchat.conversation import get_conv_template
     correct_prompt = get_conv_template("vicuna_v1.1")
     for j in range(len(messages)-1):
@@ -2633,7 +2635,7 @@ def test_chat_templates():
     try:
         from fastchat.conversation import get_conv_template
     except:
-        os.system("pip -qqq install git+https://github.com/lm-sys/FastChat.git")
+        subprocess.run([sys.executable, "-m", "pip", "-qqq", "install", "git+https://github.com/lm-sys/FastChat.git"], check=False)
         from fastchat.conversation import get_conv_template
     correct_prompt = get_conv_template("zero_shot")
     for j in range(len(messages)-1):
