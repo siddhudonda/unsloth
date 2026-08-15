@@ -75,6 +75,8 @@ def test_st_models_re_exports(tag: str):
         "Normalize": [
             "sentence_transformers/sentence_transformer/modules/normalize.py",
             "sentence_transformers/sentence_transformer/Normalize.py",
+            "sentence_transformers/base/modules/normalize.py",
+            "sentence_transformers/models/Normalize.py",
         ],
     }
     for cls, paths in expected_paths.items():
